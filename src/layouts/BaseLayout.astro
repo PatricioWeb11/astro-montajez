@@ -1,15 +1,45 @@
 ---
 import '../styles/global.css';
-const { title = 'ConstructPro - Construcción de Excelencia' } = Astro.props;
+const { title = "ConstructPro - Construcción de Excelencia" } = Astro.props;
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
   </head>
   <body>
     <slot />
+    <script is:inline>
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+
+      menuToggle?.addEventListener("click", () => {
+        menuToggle.classList.toggle("active");
+        navLinks.classList.toggle("active");
+      });
+
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menuToggle.classList.remove("active");
+          navLinks.classList.remove("active");
+        });
+      });
+
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (!header) return;
+        header.style.boxShadow =
+          window.scrollY > 100 ? "0 5px 20px rgba(0,0,0,0.3)" : "none";
+      });
+
+      document.querySelector("form")?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("¡Gracias por tu mensaje!");
+        e.target.reset();
+      });
+    </script>
   </body>
 </html>
