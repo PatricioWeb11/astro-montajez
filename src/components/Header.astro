@@ -1,0 +1,22 @@
+<header>
+  <nav>
+    <div class="logo">CONSTRUCTPRO</div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  window.addEventListener("scroll", () => {
+    const header = document.querySelector("header");
+
+    if (!header) return;
+
+    header.style.boxShadow =
+      window.scrollY > 100 ? "0 5px 20px rgba(0,0,0,0.3)" : "none";
+  });
+</script>
